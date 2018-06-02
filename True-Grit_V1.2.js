@@ -2,6 +2,62 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const config = require("./config.json");
 
+// Random Insult Generator:
+function generateRandomInsult() {
+	var insultLine1 = ["Artless", "Bawdy", "Beslubbering", "Bootless",
+			   "chrlish", "Cockered", "clouted", "craven",
+			   "currish", "dankish", "dissembling", "droning",
+			   "Errant", "fawning", "fobbing", "froward",
+			   "frothy", "Gleeking", "Goatish", "Gorbellied",
+			   "Impertinent", "Infectious", "Jarring", "Loggerheaded",
+			   "lumpish", "Mammering", "Mangled", "Mewling",
+			   "paunchy", "Pribbling", "Puking", "Puny",
+			   "Qualling", "Rank", "Reeky", "Rougish",
+			   "Ruttish", "Saucy", "Spleeny", "Spongy",
+			   "Surly", "Tottering", "Unmuzzled", "Vain",
+			   "Venomed", "Villanious", "Warped", "Wayward",
+			   "Weedy", "Yeasty"];
+	//Is there a better way to be doing this?
+	var insultLine2 = ["Base-court", "Bat-fowling", "Beef-witted", "Beetle-headed",
+			   "Boil-brained", "Clapper-clawed", "Clay-brained", "Common-kissing",
+			   "Crook-pated", "Dismal-dreaming", "Dizzy-eyed", "doghearted",
+			   "Dread-bolted", "Earth-vexing", "Elf-skinned", "Fat-kidneyed",
+			   "Fen-sucked", "Flap-mouthed", "Fly-bitten", "Folly-fallen",
+			   "Fool-born", "Full-gorged", "Guts-griping", "Half-facced",
+			   "hasty-witted", "Hedge-born", "hell-hated", "Idle-headed",
+			   "Ill-breeding", "Ill-nurtured", "Knotty-pated", "Milk-livered",
+			   "Motley-minded", "Onion-eyed", "Plume-plucked", "Pittle-deep",
+			   "Pox-marked", "Reeling-ripe", "Rough-hewn", "Rude-growing",
+			   "Rump-fed", "Shard-borne", "Sheep-biting", "Spur-galled",
+			   "Swag-bellied", "tardy-gaited", "Tickle-brained", "Toad-spotted",
+			   "Unchin-snouted", "Weather-bitten"];
+	
+	var insultLine3 = ["Apple-john", "baggage", "barnacle", "bladder",
+			   "boar-pig", "bugbear", "bum-bailey", "canker-blossom",
+			   "Clack-dish", "Clotpole", "coxcomb", "codpiece",
+			   "Death-token", "Dewberry", "Flap-dragon", "Flax-wench",
+			   "Flirt-gill", "Foot-licker", "fustilarian", "giglet",
+			   "Gudgeon", "Haggard", "Harpy", "Hedge-pig",
+			   "Horn-beast", "Hugger-mugger", "Joithead", "Lewdster",
+			   "Lout", "Maggot-pie", "Malt-worm", "Mammet",
+			   "Measle", "Minnow", "Miscreant", "Moldwarp",
+			   "Mumble-news", "Nut-hook", "Pigeon-egg", "Pignut",
+			   "Puttock", "Pumpion", "Ratsbane", "Scut",
+			   "Skainsmate", "Strumpet", "Varlot", "Vassal",
+			   "Whey-face", "Wagtail"];
+	
+	var InsultRandom1 = Math.floor(Math.random()* 49);
+	var InsultRandom2 = Math.floor(Math.random()* 49);
+	var InsultRandom3 = Math.floor(Math.random()* 49);
+	var to_send = `${message.mentions.users.first()}, thou art a
+                          ${insultLine1[InsultRandom1]} ${insultLine2[InsultRandom2]}
+                           ${insultLine3[InsultRandom3]}`;
+	
+	message.channel.send( to_send );
+
+  return randomInsult;	
+}
+
 client.on('you up?', () => {
   console.log(`new phone who dis?`);
     client.user.setGame(`What's this?! True Grit is Evolving!`);
@@ -153,15 +209,8 @@ if (command === "trait" ) {
 // New version of insult generator here utlizes the above 'trait' command process. But with a bit more in the array. 
 	
 if (command === "insult"){
-	var insultLine1 = ["Artless", "Bawdy", "Beslubbering", "Bootless", "chrlish", "Cockered", "clouted", "craven", "currish", "dankish", "dissembling", "droning", "Errant", "fawning", "fobbing", "froward", "frothy", "Gleeking", "Goatish", "Gorbellied", "Impertinent", "Infectious", "Jarring", "Loggerheaded", "lumpish", "Mammering", "Mangled", "Mewling", "paunchy", "Pribbling", "Puking", "Puny", "Qualling", "Rank", "Reeky", "Rougish", "Ruttish", "Saucy", "Spleeny", "Spongy", "Surly", "Tottering", "Unmuzzled", "Vain", "Venomed", "Villanious", "Warped", "Wayward", "Weedy", "Yeasty"];
-	//Is there a better way to be doing this?
-	var insultLine2 = ["Base-court", "Bat-fowling", "Beef-witted", "Beetle-headed", "Boil-brained", "Clapper-clawed", "Clay-brained", "Common-kissing", "Crook-pated", "Dismal-dreaming", "Dizzy-eyed", "doghearted", "Dread-bolted", "Earth-vexing", "Elf-skinned", "Fat-kidneyed", "Fen-sucked", "Flap-mouthed", "Fly-bitten", "Folly-fallen", "Fool-born", "Full-gorged", "Guts-griping", "Half-facced", "hasty-witted", "Hedge-born", "hell-hated", "Idle-headed", "Ill-breeding", "Ill-nurtured", "Knotty-pated", "Milk-livered", "Motley-minded", "Onion-eyed", "Plume-plucked", "Pittle-deep", "Pox-marked", "Reeling-ripe", "Rough-hewn", "Rude-growing", "Rump-fed", "Shard-borne", "Sheep-biting", "Spur-galled", "Swag-bellied", "tardy-gaited", "Tickle-brained", "Toad-spotted", "Unchin-snouted", "Weather-bitten"];
 	
-	var insultLine3 = ["Apple-john", "baggage", "barnacle", "bladder", "boar-pig", "bugbear", "bum-bailey", "canker-blossom", "Clack-dish", "Clotpole", "coxcomb", "codpiece", "Death-token", "Dewberry", "Flap-dragon", "Flax-wench", "Flirt-gill", "Foot-licker", "fustilarian", "giglet", "Gudgeon", "Haggard", "Harpy", "Hedge-pig", "Horn-beast", "Hugger-mugger", "Joithead", "Lewdster", "Lout", "Maggot-pie", "Malt-worm", "Mammet", "Measle", "Minnow", "Miscreant", "Moldwarp", "Mumble-news", "Nut-hook", "Pigeon-egg", "Pignut", "Puttock", "Pumpion", "Ratsbane", "Scut", "Skainsmate", "Strumpet", "Varlot", "Vassal", "Whey-face", "Wagtail"];
-	
-	var InsultRandom = Math.floor(Math.random()* 49);
-	
-	message.channel.send(`${message.mentions.users.first()} Thou art a  ${insultLine1[InsultRandom]} ${insultLine2[InsultRandom]} ${insultLine3[InsultRandom]}`);
+	generateRandomInsult();
 }
 	//const request= require("request")("http://numbersapi.com/random/math?json",)
 //function(err, res, body) {
