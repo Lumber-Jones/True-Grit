@@ -1,0 +1,8 @@
+if (command === "sorte") {
+	var hubris = [ "A","B","C"]
+	var virtue = [ "A","B","C"]
+//below should be the math that lets the sorte deck do it's randomizing
+		var SorteDeck = Math.floor(Math.random()* 3);
+	message.channel.send(hubris + virtue[SorteDeck]);
+// the intention is for command to produce one hubris result and one virtue result randomly selected from list of opritons 
+}
